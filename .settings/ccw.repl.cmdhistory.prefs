@@ -1,0 +1,2 @@
+cmdhistory=["(defn foo\\r\\n  \\"Test svg.\\"\\r\\n  []\\r\\n  [\:svg {\:width \\"400\\" \:height \\"400\\"} [\:path {\:stroke \\"black\\" \:D \\"m 150,100 l 300,300 z\\"}]])" "(foo)" "(hiccup-to-svg foo)" "(hiccup-to-svg (foo))" "(html foo)" "(html (foo))" "(html [\:svg])" "(hiccup-to-svg (foo))" "(svg-quotes-helper (hiccup-to-svg (foo)))"]
+eclipse.preferences.version=1
