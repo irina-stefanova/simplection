@@ -1,0 +1,6 @@
+1. run transpose/group functions
+2. run stacking/clustering/overlapping/ordering functions
+3. data values to coordinates (processing)
+4. run path drawing on points functions 
+5. run clip figure function
+6. run styling
