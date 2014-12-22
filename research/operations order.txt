@@ -4,3 +4,54 @@
 4. run path drawing on points functions 
 5. run clip figure function
 6. run styling
+
+
+PGroup
+	transpose-data
+	group-data
+
+PArranger
+	arrange-data-points
+	
+		defrecord Stacked
+		defrecord Stacked100
+		defrecord Clustered
+		defrecord Overlapped
+		defrecord Ranged []
+
+PInterpolator
+	interpolate
+	
+		defrecord LinearlyInterpolated
+		defrecord PolynomiallyInterpolated
+
+PExtrapolator
+	extrapolate
+		
+		defrecord LinearlyExtrapolated
+		defrecord PolynomiallyExtrapolated
+		defrecord ConicallyExtrapolated
+		defrecord FrenchCurveExtrapolated
+		
+PDataPathGenerator
+	generate-data-path
+	
+		nil // no data path
+		defrecord Straight
+		defrecord Bezier
+		defrecord Stepped
+		defrecord HorizontalLine
+		defrecord VerticalLine
+		
+
+PGeometryGenerator
+	generate-auxiliary-paths
+	generate-areas
+	
+		nil // no area or auxiliary path
+		defrecord 
+	
+PStyleApplicator
+	clip
+	line
+	area
