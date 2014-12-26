@@ -1,5 +1,5 @@
 (ns simplection.datapath.core)
 
 
-(defprotocol PDataPathGenerator
+(defprotocol PDataPathGeometry
   (generate-data-path [this]))

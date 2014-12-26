@@ -10,7 +10,7 @@ PGroup
 	transpose-data
 	group-data
 
-PArranger
+PArrangement
 	arrange-data-points
 	
 		defrecord Stacked
@@ -19,21 +19,86 @@ PArranger
 		defrecord Overlapped
 		defrecord Ranged []
 
-PInterpolator
+PInterpolation
 	interpolate
 	
-		defrecord LinearlyInterpolated
-		defrecord PolynomiallyInterpolated
+		defrecord LinearInterpolation
+		defrecord PolynomialInterpolation
 
-PExtrapolator
+PExtrapolation
 	extrapolate
 		
-		defrecord LinearlyExtrapolated
-		defrecord PolynomiallyExtrapolated
-		defrecord ConicallyExtrapolated
+		defrecord LinearExtrapolation
+		defrecord PolynomialExtrapolation
+		defrecord ConicalExtrapolation
+		defrecord FrenchCurveExtrapolation
+		
+PDataPathGeometry
+	generate-data-path
+	
+		nil // no data path
+		defrecord Straight
+		defrecord Bezier
+		defrecord Stepped
+		defrecord HorizontalLine
+		defrecord VerticalLine
+
+PAreaGeometry
+	generate-auxiliary-paths
+	generate-areas
+	
+		nil // no area or auxiliary path
+		defrecord ToAxis
+		defrecord ToPoint
+	
+PMask
+	apply-mask
+	
+		nil // no mask
+		defrecord StandardMask
+
+PStyle
+	line
+	area
+	
+	
+	
+	1. run transpose/group functions
+2. run stacking/clustering/overlapping/ordering functions
+3. data values to coordinates (processing)
+4. run path drawing on points functions 
+5. run clip figure function
+6. run styling
+
+
+PGrouping
+	transpose-data
+	group-data
+
+PArrangement
+	arrange-data-points
+	
+		defrecord Stacked
+		defrecord Stacked100
+		defrecord Clustered
+		defrecord Overlapped
+		defrecord Ranged []
+
+PInterpolation
+	interpolate
+	
+		defrecord LinearInterpolation
+		defrecord PolynomialInterpolation
+
+PExtrapolation
+	extrapolate
+		
+		defrecord LinearExtrapolation
+		defrecord PolynomialExtrapolation
+		defrecord ConicalExtrapolation
 		defrecord FrenchCurveExtrapolated
 		
-PDataPathGenerator
+PDataPathGeometry
 	generate-data-path
 	
 		nil // no data path
@@ -44,14 +109,20 @@ PDataPathGenerator
 		defrecord VerticalLine
 		
 
-PGeometryGenerator
+PAreaGeometry
 	generate-auxiliary-paths
 	generate-areas
 	
 		nil // no area or auxiliary path
-		defrecord 
+		defrecord ToAxisRectangle
+		defrecord ToPointRectangle
 	
-PStyleApplicator
-	clip
-	line
+PClipGeometry
+	clip	
+	
+PStyle
+	stroke
+	fill
+		
+		defrecord Style [colors-coll]
 	area
