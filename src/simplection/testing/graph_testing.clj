@@ -34,5 +34,5 @@
                [(ReportItem. (generate-data-path test-data1) "rep-item-1")
                 (ReportItem. (generate-data-path test-data2) "rep-item-2")]))
 
-(svg-quotes-helper (hiccup->svg (generate-report report1)))
+(svg-quotes-helper (hiccup->svg (generate-report report-1)))
 
