@@ -1,4 +1,5 @@
-(ns simplection.report)
+(ns simplection.report
+  (:require hiccup.core))
 
 (defn geometry->svg
   "Convert geometry instructions to svg path"
@@ -10,7 +11,7 @@
 (defn generate-item 
   [item]
   (let [geometries (:coll-geometries item)
-         name (:name item)]
+        name (:name item)]
     [:g {:id name} (geometry->svg geometries)]))
 
 (defrecord Report [coll-report-items])
