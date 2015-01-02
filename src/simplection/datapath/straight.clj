@@ -1,5 +1,5 @@
 (ns simplection.datapath.straight
-  (:require [simplection.datapath.core :refer [PDataPathGeometry ->Report]]))
+  (:require [simplection.datapath.core]))
 
 (defrecord Straight[coll])
 
