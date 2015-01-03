@@ -5,8 +5,12 @@ function normalize(angleDeg)
   return (((angleDeg) % 360) + 360) % 360;
 }
 
+function toRadians(angleInDegrees) {
+	return (angleInDegrees - 90) * Math.PI / 180.0;
+}
+
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+  var angleInRadians = toRadians(angleInDegrees);
 
   var a = centerX + (radius * Math.cos(angleInRadians));
   var b = centerY + (radius * Math.sin(angleInRadians));
@@ -22,8 +26,7 @@ function polarCartesian(polarSet){
   var step = 360 / count;
   for(var i = 0; i < count; i++)
     {
-      cartesianSet[i] = 
-        polarToCartesian(0,0,polarSet[i],step * i);
+      cartesianSet[i] = polarToCartesian(0,0,polarSet[i],step * i);
     }
   
   return cartesianSet;

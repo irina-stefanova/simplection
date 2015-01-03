@@ -7,3 +7,10 @@ Fibonachi Graph?
 Chord Chart - http://sdk.gooddata.com/gooddata-js/example/chord-chart-to-analyze-sales/
 Smith Chart
 Piper Diagram
+
+
+------------------------Look at those-------------------------------------
+Telerik Reporting
+Tableau
+Google charts
+Kendo UI Data Visualization
