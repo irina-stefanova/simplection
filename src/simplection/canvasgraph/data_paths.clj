@@ -1,5 +1,7 @@
-(ns simplection.datapath.straight
-  (:require [simplection.datapath.core]))
+(ns simplection.canvasgraph.data-paths)
+
+(defprotocol PDataPathGeometry
+  (generate-data-path [this]))
 
 (defrecord Straight[coll])
 
