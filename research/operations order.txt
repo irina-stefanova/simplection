@@ -62,9 +62,18 @@ PAreaGeometry
 	generate-auxiliary-paths
 	generate-areas
 	
-		nil // no area or auxiliary path
-		defrecord ToAxisRectangle
-		defrecord ToPointRectangle
+		// something here is wrong - the area geometry can be: 
+		// straight to the axis (simple area graph)
+		// to the next data path (range area or range bars)
+		// to the next data path and the last data path - straight to the axis (stacked bars, area)
+		// there is the option to have custom aux paths
+		// and being able to combine (ToAxisAndDataPath) means that PAreaGeometry is part of each data path
+		// furthermore there is very heavy influence by the arrangement
+		// so these are somewhat tied
+		nil // no area or auxiliary path 
+		defrecord ToAxis
+		defrecord ToDataPath
+		defrecord ToAxisAndDataPath
 	
 PMask
 	apply-mask
