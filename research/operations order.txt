@@ -5,12 +5,11 @@
 5. run clip figure function
 6. run styling
 
-
-PGroup
-	transpose-data
+PDataOrganization
+transpose-data
 	group-data
 
-PArrangement
+PArrangement // data is ready now to be displayed as coordinates
 	arrange-data-points
 	
 		defrecord Stacked
@@ -33,17 +32,19 @@ PExtrapolation
 		defrecord ConicalExtrapolation
 		defrecord FrenchCurveExtrapolation
 		
-PAxisScale
+PAxisScale // possibly PDataRepresentation
 	transform
 	
 		defrecord CategoryScale
 		defrecord DateTimeScale
 		defrecord NumericScale
 		defrecord LogarithmicScale
-		defrecord ExponentialScale		
+		defrecord ExponentialScale
+		
+	convert to the range of the axis
 		
 PCoordinateSystem
-	transform
+	generate-coordinates
 	
 		defrecord PolarCoordinateSystem
 		defrecord CartesianCoordinateSystem
