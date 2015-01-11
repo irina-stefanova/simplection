@@ -1,12 +1,12 @@
-(ns simplection.canvasgraph.scales
+(ns simplection.canvasgraph.data-representation
   (:require simplection.utils))
 
-(defprotocol PScales
+(defprotocol PDataRepresentation
   (generate-coordinates [this]))
 
 (defrecord Category[coll coordinates-range])
 
-(extend-protocol PScales
+(extend-protocol PDataRepresentation
   Category
   (generate-coordinates [{categories :coll coordinates-range :coordinates-range}] 
     (let [categories-count (count (distinct categories))
@@ -15,7 +15,7 @@
 
 (defrecord Numeric[coll coordinates-range])
 
-(extend-protocol PScales
+(extend-protocol PDataRepresentation
   Numeric
   (generate-coordinates [{values :coll coordinates-range :coordinates-range}] 
     (let [values-range [(apply min values) (apply max values)]]

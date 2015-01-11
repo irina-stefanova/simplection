@@ -3,21 +3,21 @@
 (defprotocol PCoordinateSystem
   (generate-coordinates [this]))
 
-;;; coll-data should look like {:x ['(Category. [A])] :y ['(Numeric. [B]) '(Numeric. [C])]} - consider orientation
-;;; coll-data-mappings are used to define [x y] for each point; if there exist columns [A B C] for the above the mappings can be [A B] [A C]
-;;; size is the total size available for the coordinate system
-(defrecord Cartesian[coll-data coll-data-mappings size])
+;;; {:a [(Numeric. DA) (Category. DB DC) (Category. DD)
+;;;  :b [(Numeric. D1) (Numeric. D2) (Numeric. D3)]
+;;;  :mapping [[0 0] [0 1] [1 1] [2 1] [2 2]]}
+(defrecord Cartesian[coll-axis size])
 
 (extend-protocol PCoordinateSystem
   Cartesian
-  (generate-coordinates [{categories :coll coordinates-range :coordinates-range}] 
+  (generate-coordinates [{coll-axis :coll-axis size :size}] 
     ))
 
-(defrecord Polar[coll coordinates-range])
+(defrecord Polar[coll-axis coordinates-range])
 
 (extend-protocol PCoordinateSystem
   Polar
-  (generate-coordinates [{values :coll coordinates-range :coordinates-range}] 
+  (generate-coordinates [{coll-axis :coll-axis size :size}] 
     ))
 
 (defn normalize-angle
