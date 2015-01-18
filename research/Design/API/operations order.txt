@@ -6,17 +6,7 @@
 6. run styling
 
 PDataOrganization
-transpose-data
-	group-data
-
-PArrangement // data is ready now to be displayed as coordinates
-	arrange-data-points
-	
-		defrecord Stacked
-		defrecord Stacked100
-		defrecord Clustered
-		defrecord Overlapped
-		defrecord Ranged []
+	group-aggregate-data
 
 PInterpolation
 	interpolate
@@ -31,8 +21,21 @@ PExtrapolation
 		defrecord PolynomialExtrapolation
 		defrecord ConicalExtrapolation
 		defrecord FrenchCurveExtrapolation
-		
-PAxisScale // possibly PDataRepresentation
+	
+// data is ready now to be displayed as coordinates
+PDimension 
+	arrange-data-points
+	
+		defrecord Clustered
+		defrecord Overlapped
+	
+PMeasurement
+	arrange-data-points
+
+		defrecord Stacked // stacking is made in groups so stacked with only one series is the same as normal
+		defrecord Stacked100
+			
+PDataRepresentation
 	transform
 	
 		defrecord CategoryScale
@@ -40,8 +43,6 @@ PAxisScale // possibly PDataRepresentation
 		defrecord NumericScale
 		defrecord LogarithmicScale
 		defrecord ExponentialScale
-		
-	convert to the range of the axis
 		
 PCoordinateSystem
 	generate-coordinates
@@ -56,8 +57,8 @@ PDataPathGeometry
 		defrecord Straight
 		defrecord Bezier
 		defrecord Stepped
-		defrecord HorizontalLine
-		defrecord VerticalLine
+		defrecord Line
+		defrecord Arc
 
 PAreaGeometry
 	generate-auxiliary-paths
