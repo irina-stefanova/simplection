@@ -3,9 +3,6 @@
 (defprotocol PCoordinateSystem
   (generate-coordinates [this]))
 
-;;; {:a [(Numeric. DA) (Category. DB DC) (Category. DD)
-;;;  :b [(Numeric. D1) (Numeric. D2) (Numeric. D3)]
-;;;  :mapping [[0 0] [0 1] [1 1] [2 1] [2 2]]}
 (defrecord Cartesian[coll-axis size])
 
 (extend-protocol PCoordinateSystem

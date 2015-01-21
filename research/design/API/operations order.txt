@@ -55,7 +55,7 @@ PDataPathGeometry
 	
 		nil // no data path
 		defrecord Straight
-		defrecord Bezier
+		defrecord Smooth // Bezier
 		defrecord Stepped
 		defrecord Line
 		defrecord Arc

@@ -12,3 +12,10 @@
        [new-min new-max] new-range
        k (ranges-coefficient old-min old-max new-min new-max)]
     (map #(- new-max (/ (- old-max %) k)) coll-old-values)))
+
+(defn offset-range 
+  "Offsets values evenly from the original range"
+  [coll-original-range categories-count]
+  (let [[original-min original-max] coll-original-range
+        step (/ original-max (* 2 categories-count))]
+    [(+ original-min step) (- original-max step)]))
