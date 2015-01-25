@@ -1,8 +1,24 @@
 (ns simplection.testing.graph-testing
-  (:require [simplection.report :refer [hiccup->svg generate-report]]
+  (:require [simplection.canvasgraph.data-paths :refer [generate-data-path]] 
+            [simplection.report :refer [hiccup->svg generate-report]]
             [simplection.testing.helpers :refer [svg-quotes-helper]])
   (:import [simplection.canvasgraph.data_paths Straight]
            [simplection.report Report ReportItem]))
+
+(def test-table [{:DO "a"   :DC "main"      :DSC "main-a"      :DSSC "main-a-1"      :DX1 10    :DX2 90    :DY1 120   :DY2 70}
+                 {:DO "b"   :DC "general"   :DSC "general-b"   :DSSC "general-b-1"   :DX1 50    :DX2 100   :DY1 40    :DY2 80}
+                 {:DO "c"   :DC "general"   :DSC "general-c"   :DSSC "general-c-1"   :DX1 20    :DX2 30    :DY1 60    :DY2 20}
+                 {:DO "a"   :DC "general"   :DSC "general-d"   :DSSC "general-d-1"   :DX1 40    :DX2 20    :DY1 40    :DY2 0}
+                 {:DO "c"   :DC "main"      :DSC "main-b"      :DSSC "main-b-1"      :DX1 60    :DX2 80    :DY1 110   :DY2 50}
+                 {:DO "a"   :DC "main"      :DSC "main-c"      :DSSC "main-c-1"      :DX1 100   :DX2 60    :DY1 40    :DY2 20}
+                 {:DO "a"   :DC "general"   :DSC "general-d"   :DSSC "general-d-1"   :DX1 10    :DX2 40    :DY1 110   :DY2 80}
+                 {:DO "b"   :DC "general"   :DSC "general-e"   :DSSC "general-e-1"   :DX1 70    :DX2 120   :DY1 10    :DY2 20}
+                 {:DO "c"   :DC "general"   :DSC "general-b"   :DSSC "general-b-1"   :DX1 20    :DX2 10    :DY1 0     :DY2 90}])
+
+(def canvas-graph-definition {:aggregates [{:aggregate "category-group" :data [0]}
+                                           {:aggregate "series-group" :data [1]}
+                                           {:aggregate "+" :data [4]}
+                                           {:aggregate "average" :data [5]}]})
 
 (def test-data-1 (Straight. [[[180 455][189 412][199 355][208 381][217 377][226 416][236 407][245 338][254 312][263 282][273 316][282 303][291 325][301 282]
                               [310 273][319 251][328 264][338 247][347 229][356 221][366 273][375 216][384 212][393 208][403 195][412 238][421 229][430 234]
@@ -34,3 +50,29 @@
 
 (svg-quotes-helper (hiccup->svg (generate-report report-1)))
 
+(defn select-values [map column-names]
+  (reduce #(conj %1 (map %2)) [] column-names))
+
+(defn filter-table
+  "Filter the table by columns."
+  [table column-names]
+  (for [row table] 
+    (select-keys row column-names)))
+
+(defn group-table
+  "Group table by a chosen column combination."
+  [table column-names]
+  (group-by #(select-keys % column-names) table))
+
+(defn aggregate-table
+  "Aggregates the table."
+  [table aggregates]
+  (for [[_ rows] table] 
+    (merge-with-multiple-aggregates table aggregates)))
+
+(defn merge-with-multiple-aggregates
+  ""
+  [table-section aggregates]
+  (zipmap 
+    (keys aggregates)
+    (apply map #(eval (vals %&)) (conj table-section aggregates))))

@@ -1,10 +1,7 @@
-# simplection
+# Simplection
 
-A Clojure library designed to ... well, that part is up to you.
+Simplection is a Business Intelligence tool from a new generation. In the cloud, with unlimited extensibility and powerfull data visualizations Simplection offers unparalleled productivity.
 
-## Usage
-
-FIXME
 
 ## License
 
