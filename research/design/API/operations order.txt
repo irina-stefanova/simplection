@@ -5,9 +5,6 @@
 5. run clip figure function
 6. run styling
 
-PDataOrganization
-	group-aggregate-data
-
 PInterpolation
 	interpolate
 	
@@ -21,6 +18,9 @@ PExtrapolation
 		defrecord PolynomialExtrapolation
 		defrecord ConicalExtrapolation
 		defrecord FrenchCurveExtrapolation
+		
+PDataOrganization
+	group-aggregate-data
 	
 // data is ready now to be displayed as coordinates
 PDimension 
